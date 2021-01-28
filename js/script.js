@@ -4,7 +4,6 @@
 // cancellare la nota, cliccando sulla X corrispondente
 
 
-
 new Vue({
   el: '#app',
   data: {
@@ -17,10 +16,12 @@ new Vue({
   methods: {
     addNewTodo: function() {
       this.todos.push(this.newTodoText)
-
+      this.newTodoText = '';
     },
-    removeTodo: function() {
-      this.todos.splice(this.newTodoText, 1)
+    removeTodo: function(todoIndex) {
+      this.todos = this.todos.filter((item, index) => {
+        return index !== todoIndex
+      });
     }
   }
 })

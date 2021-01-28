@@ -11,12 +11,12 @@
 
   <div id="app">
 
-    <input v-model="newTodoText" id="new-todo" placeholder="New Todo">
+    <input @keyup.enter="addNewTodo" v-model="newTodoText" id="new-todo" placeholder="New Todo">
     <button v-on:click="addNewTodo">Add</button>
 
     <ul>
       <li v-for="(item, index) in todos">{{ item }}
-        <button v-on:click="removeTodo">Remove</button>
+        <button @keydown.delete="removeTodo(index)" @click="removeTodo(index)">Remove</button>
       </li>
     </ul>
 
